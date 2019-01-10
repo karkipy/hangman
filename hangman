@@ -1,20 +1,19 @@
 #!/bin/bash
-movies=("MARRY POPPINS" "COCO" "MOONLIGHT" "MAD MAX")
-options=("M__RY PO___NS" "C__O" "M__NL____" "M__ ___")
-
+movies=("MARRY POPPINS" "COCO" "MOONLIGHT" "MAD MAX" "AVENGERS")
+options=("M__RY PO___NS" "C__O" "M__NL____" "M__ ___" "A_E___RS")
+originalValue=$options
 # Unix=${Unix[@]/M__RY PO___NS/SCO Unix}
 count=0
 errorCount=0
 error=false
+score=0
+
 
 keycode() {
   read -d '' -sn 1
   pressedValue=$(echo "$REPLY" | awk '{print toupper($0)}')
   resultDisplay=${movies[$count]}
-
-
   currentDisplay=${options[$count]}
-
   length=${#currentDisplay}
   for i in $(seq 0 $length);
   do
@@ -44,38 +43,157 @@ keycode() {
   if [ "${options[${count}]}" == "$resultDisplay" ];
   then
     count=$((count + 1))
+    score=$((score + 10))
+    errorCount=0
   fi;
 
+  if [ $count == ${#movies[@]} ];
+  then
+    echo 'Congratulations Game Completed, press any key to restart'
+    gameOver
+  fi;
 }
+
+
+upperBar() {
+  echo '------------------------------'
+  echo '| |                        | |'
+  echo '------------------------------'
+}
+
+sideBar() {
+  for i in {1..18}
+  do
+    echo  '                           | |'
+  done
+}
+
+firstError() {
+  echo ''
+  echo ''
+  echo ''
+  sideBar
+}
+
+secondError() {
+  upperBar
+  sideBar
+}
+
+thirdError() {
+  upperBar
+  for i in {1..4}
+  do
+  echo  '                           | |'
+  done
+  echo  '         ----------        | |'
+  echo  '       (|  O    O  |)      | |'
+  echo  '        |    _     |       | |'
+  echo  '         ----------        | |'
+  echo  '             ||            | |'
+  echo  '       ---------------     | |'
+  echo  '      |               |    | |'
+  echo  '      |               |    | |'
+  echo  '      |               |    | |'
+  echo  '       ---------------     | |'
+  echo  '         ||       ||       | |'
+  echo  '         ||       ||       | |'
+  echo  '       __||       ||__     | |'
+  echo  '      |__||       ||__|    | |'
+}
+
+
+fourthError() {
+  upperBar
+  for i in {1..4}
+  do
+  echo  '             ||            | |'
+  done
+  echo  '         ----------        | |'
+  echo  '       (|  O    O  |)      | |'
+  echo  '        |    _     |       | |'
+  echo  '         ----------        | |'
+  echo  '             ||            | |'
+  echo  '       ---------------     | |'
+  echo  '      |               |    | |'
+  echo  '      |               |    | |'
+  echo  '      |               |    | |'
+  echo  '       ---------------     | |'
+  echo  '         ||       ||       | |'
+  echo  '         ||       ||       | |'
+  echo  '       __||       ||__     | |'
+  echo  '      |__||       ||__|    | |'
+
+
+}
+
+
+fifthError() {
+ upperBar
+  for i in {1..4}
+  do
+  echo  '             ||            | |'
+  done
+  echo  '         ----------        | |'
+  echo  '       (|  X    X  |)      | |'
+  echo  '        |    _     |       | |'
+  echo  '         ----------        | |'
+  echo  '             ||            | |'
+  echo  '       ---------------     | |'
+  echo  '      |               |    | |'
+  echo  '      |               |    | |'
+  echo  '      |               |    | |'
+  echo  '       ---------------     | |'
+  echo  '         ||       ||       | |'
+  echo  '         ||       ||       | |'
+  echo  '       __||       ||__     | |'
+  echo  '      |__||       ||__|    | |'
+}
+
+
+gameOver() {
+  read -d '' -sn 1
+  errorCount=0
+  count=0
+  score=0
+  clear
+  echo "Guess The Name of the movie :              Score:"$score
+  echo ''
+  options=$originalValue
+  echo ${options[$count]}
+}
+
 
 game() {
   if [ "$errorCount" == 1 ];
   then
-    echo "First Error"
+
+    firstError
   elif [ "$errorCount" == 2 ];
   then
-    echo "Second Error"
+    secondError
   elif [ "$errorCount" == 3 ];
   then
-    echo "Third Error"
+    thirdError
   elif [ "$errorCount" == 4 ];
   then
-    echo "Fourth Error"
+    fourthError
   elif [ "$errorCount" == 5 ];
   then
-    echo "Fifth Error"
+    fifthError
+    echo "Game Over Press any key to restart"
+    gameOver
   fi;
 
 }
 
 
-
 while true;
   do
-    # clear
-    echo "Guess The Name of the movie"
+    clear
+    echo "Guess The Name of the movie :              Score: "$score
+    echo ''
     echo ${options[$count]}
-    echo $errorCount
     game
     keycode
 

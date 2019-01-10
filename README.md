@@ -13,7 +13,7 @@ Manual
   git clone https://github.com/karkipy/hangman
 ```
 
-Inside the projecy
+Inside the project
 
 
 ```bash

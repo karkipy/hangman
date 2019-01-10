@@ -13,6 +13,13 @@ Manual
   git clone https://github.com/karkipy/hangman
 ```
 
+Inside the projecy
+
+
+```bash
+ cd hangman
+```
+
 Give the permission to the script
 
 ```bash

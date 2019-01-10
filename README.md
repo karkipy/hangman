@@ -10,7 +10,7 @@ One of my friend had let me know about someone who had made 2048 in bash, so was
 Manual
 
 ```bash
-  git clone {this-repo}
+  git clone https://github.com/karkipy/hangman
 ```
 
 Give the permission to the script

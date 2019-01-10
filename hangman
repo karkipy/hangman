@@ -1,0 +1,83 @@
+#!/bin/bash
+movies=("MARRY POPPINS" "COCO" "MOONLIGHT" "MAD MAX")
+options=("M__RY PO___NS" "C__O" "M__NL____" "M__ ___")
+
+# Unix=${Unix[@]/M__RY PO___NS/SCO Unix}
+count=0
+errorCount=0
+error=false
+
+keycode() {
+  read -d '' -sn 1
+  pressedValue=$(echo "$REPLY" | awk '{print toupper($0)}')
+  resultDisplay=${movies[$count]}
+
+
+  currentDisplay=${options[$count]}
+
+  length=${#currentDisplay}
+  for i in $(seq 0 $length);
+  do
+    currentLetter=${currentDisplay:$i:1}
+    if  [ ! "$currentLetter" ];
+    then
+      echo "";
+    elif [ "$currentLetter" == "_" ];
+    then
+      if [ ${resultDisplay:$i:1} == $pressedValue ];
+      then ## Case for being true
+       replacePattern=${currentDisplay:0:$i}$pressedValue${currentDisplay:$(($i+1))}
+       options[${count}]=$replacePattern
+       error=false
+       break
+       else
+        error=true
+      fi;
+    fi;
+  done
+
+  if [ "$error" = true ]
+  then
+    errorCount=$((errorCount + 1))
+  fi;
+
+  if [ "${options[${count}]}" == "$resultDisplay" ];
+  then
+    count=$((count + 1))
+  fi;
+
+}
+
+game() {
+  if [ "$errorCount" == 1 ];
+  then
+    echo "First Error"
+  elif [ "$errorCount" == 2 ];
+  then
+    echo "Second Error"
+  elif [ "$errorCount" == 3 ];
+  then
+    echo "Third Error"
+  elif [ "$errorCount" == 4 ];
+  then
+    echo "Fourth Error"
+  elif [ "$errorCount" == 5 ];
+  then
+    echo "Fifth Error"
+  fi;
+
+}
+
+
+
+while true;
+  do
+    # clear
+    echo "Guess The Name of the movie"
+    echo ${options[$count]}
+    echo $errorCount
+    game
+    keycode
+
+  done
+

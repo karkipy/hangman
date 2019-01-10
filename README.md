@@ -1,12 +1,9 @@
 ## Which Ip
-  A simple bash script to find ip
+  A simple hangman in bash
 
 ## Motivation
 
-Working in react-native, you may have multiple devices and the host for the device would be running in another side or the device you work on, usually the ip address while working locally won't be changed but who knows. So a simple script to find ip rather than the big spaghetti output of
-```bash
-  ifconfig en0
-```
+One of my friend had let me know about someone who had made 2048 in bash, so was thinking of making a game in bash since then plus I got bored.
 
 ## Installation
 
@@ -38,10 +35,20 @@ curl https://raw.githubusercontent.com/karkipy/hangman/master/hangman -o /usr/lo
 
 
 
-Restart the terminal
+Restart the terminal and hit the command
+
+```bash
+  hangman
+```
 
 ### Output
 
-<img width="399" alt="screen shot 2019-01-10 at 12 07 47 pm" src="https://user-images.githubusercontent.com/12614476/50949967-70d0dc80-14d0-11e9-985c-a29baf213cc2.png">
+<img width="383" alt="screen shot 2019-01-10 at 8 16 56 pm" src="https://user-images.githubusercontent.com/12614476/50975380-8ddbce80-1515-11e9-9253-517f584733fe.png">
+
+
+<br>
+<br>
+<img width="422" alt="screen shot 2019-01-10 at 8 17 03 pm" src="https://user-images.githubusercontent.com/12614476/50975381-8e746500-1515-11e9-9eaf-f3e344a4b7a1.png">
+
 
 

@@ -2,7 +2,6 @@
 movies=("MARRY POPPINS" "COCO" "MOONLIGHT" "MAD MAX" "AVENGERS")
 options=("M__RY PO___NS" "C__O" "M__NL____" "M__ ___" "A_E___RS")
 originalValue=$options
-# Unix=${Unix[@]/M__RY PO___NS/SCO Unix}
 count=0
 errorCount=0
 error=false
@@ -198,4 +197,3 @@ while true;
     keycode
 
   done
-

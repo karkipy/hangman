@@ -1,4 +1,4 @@
-## Which Ip
+## Hangman
   A simple hangman in bash
 
 ## Motivation

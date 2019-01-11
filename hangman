@@ -164,27 +164,25 @@ gameOver() {
 
 
 game() {
-  if [ "$errorCount" == 1 ];
-  then
 
-    firstError
-  elif [ "$errorCount" == 2 ];
-  then
-    secondError
-  elif [ "$errorCount" == 3 ];
-  then
-    thirdError
-  elif [ "$errorCount" == 4 ];
-  then
-    fourthError
-  elif [ "$errorCount" == 5 ];
-  then
-    fifthError
+  case "$errorCount" in
+
+1)  firstError
+    ;;
+2)  secondError
+    ;;
+3)  thirdError
+    ;;
+4) fourthError
+   ;;
+5) fifthError
     echo "Game Over Press any key to restart"
     gameOver
-  fi;
+   ;;
+esac
 
 }
+
 
 
 while true;

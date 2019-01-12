@@ -37,7 +37,7 @@ Move the script to /usr/local/bin for global access
 This does all the things above
 
 ```bash
-curl https://raw.githubusercontent.com/karkipy/hangman/master/hangman -o /usr/local/bin/hangman && chmod +x /usr/local/bin/hangman
+sudo curl https://raw.githubusercontent.com/karkipy/hangman/master/hangman -o /usr/local/bin/hangman && sudo chmod +x /usr/local/bin/hangman
 ```
 
 
